@@ -354,24 +354,24 @@ if(!p1.isSameDeminsion(p2)){
 
 
 
-int main(){
+// int main(){
   
-    PhysicalNumber x(1,Unit::KG);
-    PhysicalNumber y(1000,Unit::G);
-    // bool z=(x!=y);
-    // if(z==true){
-    //     cout<<"true"<<endl;
-    // }
-    // else{
-    //     cout<<"false"<<endl;
-    // }x
+//     PhysicalNumber x(1,Unit::KG);
+//     PhysicalNumber y(1000,Unit::G);
+//     // bool z=(x!=y);
+//     // if(z==true){
+//     //     cout<<"true"<<endl;
+//     // }
+//     // else{
+//     //     cout<<"false"<<endl;
+//     // }x
 
 
-//    cout<<--x<<endl;
-cout << "Enter a physical number: ";
-cin >> x;
-cout<<x<<endl;
+// //    cout<<--x<<endl;
+// cout << "Enter a physical number: ";
+// cin >> x;
+// cout<<x<<endl;
 
 
-  }
+//   }
 
