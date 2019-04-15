@@ -295,29 +295,7 @@ if(!p1.isSameDeminsion(p2)){
 // output
     istream& ariel:: operator>>(istream& is, PhysicalNumber& p){
 
-//         double new_val;
-//         Unit new_u;
-//         ios::pos_type startPosition = input.tellg();
-        
-//         if ( (!(input >> new_val))||
-//         (!getAndCheckNextCharIs(input,'[')) ||
-//          (!(input >> new_u))||
-//          (!(getAndCheckNextCharIs(input,']'))) ) {
-
-//         // rewind on error
-//         auto errorState = input.rdstate(); // remember error state
-//         input.clear(); // clear error so seekg will work
-//         input.seekg(startPosition); // rewind
-//         input.clear(errorState); // set back the error flag
-//     } else {
-//         p.val = new_val;
-//         p.type = new_u;
-//     }
-
-//     return input;
-//     }
-
-	string s;
+    string s;
     is>>s;
     bool error = false;
     int unitStart = s.find("[");
