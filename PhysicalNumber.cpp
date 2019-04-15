@@ -301,7 +301,7 @@ if(!p1.isSameDeminsion(p2)){
     bool error = false;
     int firstClose = ans.find("[");
     int secondClose= ans.find("]");
-    if(firstClose<=0||secondClose<0||secondClose!=s.length()-1) error = true;
+    if(firstClose<=0||secondClose<0||secondClose!=ans.length()-1) error = true;
    
     if (error) auto errorState = is.rdstate();
     else {
