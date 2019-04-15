@@ -3,15 +3,15 @@
 using namespace ariel;
 using namespace std;
 
-
+//constructor
 PhysicalNumber::PhysicalNumber(double value, Unit u){
     this->val=value;
     this->type=u;
-    
-}
+ }
 
+//convertor
 const double PhysicalNumber:: typeConvertor(const PhysicalNumber& p) const{
-    switch (type)
+    switch (type) // cases by units
     {
         case Unit::KM:
         if(p.type==Unit::KM)return 1*p.val;
@@ -75,7 +75,7 @@ const double PhysicalNumber:: typeConvertor(const PhysicalNumber& p) const{
     }
 
 }
-
+//  compare between dimentionss
     const bool PhysicalNumber::isSameDeminsion(const PhysicalNumber& p ) const{
         if((this->type==Unit::KM||this->type==Unit::M||this->type==Unit::CM)
         &&(p.type==Unit::KM||p.type==Unit::M||p.type==Unit::CM))return true;
@@ -87,9 +87,9 @@ const double PhysicalNumber:: typeConvertor(const PhysicalNumber& p) const{
     }
 
 
-
+// operator +
 const PhysicalNumber PhysicalNumber::operator+(const PhysicalNumber& p)const{
-if(!isSameDeminsion(p)){
+if(!isSameDeminsion(p)){ //dimention check	
    throw "not same dimention";
 }
 else{
@@ -99,8 +99,9 @@ else{
    
 }
 
+// operator +=
 PhysicalNumber& PhysicalNumber :: operator+=(const PhysicalNumber& p){
-   if(!isSameDeminsion(p)){
+   if(!isSameDeminsion(p)){ //dimention check
    throw "not same dimention";
    }
    else{
@@ -111,11 +112,15 @@ PhysicalNumber& PhysicalNumber :: operator+=(const PhysicalNumber& p){
    return *this;
 
 }
+
+// onar +
 const PhysicalNumber PhysicalNumber:: operator+()const{
     return *this;
 }
+
+// operator -
 const PhysicalNumber PhysicalNumber:: operator-(const PhysicalNumber& p) const{
-if(!isSameDeminsion(p)){
+if(!isSameDeminsion(p)){ //dimention check
    throw "not same dimention";
 }
 else{
@@ -125,10 +130,9 @@ else{
    
 }
 
-
-
+//operator -=
 PhysicalNumber& PhysicalNumber:: operator-=(const PhysicalNumber& p){
- if(!isSameDeminsion(p)){
+ if(!isSameDeminsion(p)){ // dimention check
    throw "not same dimention";
    }
    else{
@@ -139,14 +143,17 @@ PhysicalNumber& PhysicalNumber:: operator-=(const PhysicalNumber& p){
    return *this;
 
 }
+
+//onar -
 const PhysicalNumber PhysicalNumber:: operator-()const{
     if(this->val==0){
         return *this;
     }
     else return PhysicalNumber(this->val*-1,this->type);
 }
+// operator >
 bool ariel:: operator>(const PhysicalNumber& p1, const PhysicalNumber& p2){
- if(!p1.isSameDeminsion(p2)){
+ if(!p1.isSameDeminsion(p2)){ //dimention check
    throw "not same dimention";
    }
    else{
@@ -155,8 +162,9 @@ bool ariel:: operator>(const PhysicalNumber& p1, const PhysicalNumber& p2){
    }
 
 }
+// operator <
 bool ariel:: operator<(const PhysicalNumber& p1, const PhysicalNumber& p2){
-if(!p1.isSameDeminsion(p2)){
+if(!p1.isSameDeminsion(p2)){ // //dimention check
    throw "not same dimention";
    }
    else{
@@ -166,8 +174,9 @@ if(!p1.isSameDeminsion(p2)){
 
 } 
 
+//operator >=
  bool ariel::  operator>=(const PhysicalNumber& p1, const PhysicalNumber& p2){
-if(!p1.isSameDeminsion(p2)){
+if(!p1.isSameDeminsion(p2)){ //dimention check
    throw "not same dimention";
    }
    else{
@@ -177,8 +186,10 @@ if(!p1.isSameDeminsion(p2)){
    }
 
 } 
+
+// operator <=
  bool ariel::  operator<=(const PhysicalNumber& p1, const PhysicalNumber& p2){
-if(!p1.isSameDeminsion(p2)){
+if(!p1.isSameDeminsion(p2)){//dimention check
    throw "not same dimention";
    }
    else{
@@ -188,7 +199,7 @@ if(!p1.isSameDeminsion(p2)){
    }
 
 } 
-
+// operator !=
  bool ariel::  operator!=(const PhysicalNumber& p1, const PhysicalNumber& p2){
 if(!p1.isSameDeminsion(p2)){
    throw "not same dimention";
@@ -200,7 +211,7 @@ if(!p1.isSameDeminsion(p2)){
    }
 
 } 
- 
+ //operator ==
  bool ariel:: operator==(const PhysicalNumber& p1, const PhysicalNumber& p2){
 if(!p1.isSameDeminsion(p2)){
    throw "not same dimention";
@@ -211,25 +222,25 @@ if(!p1.isSameDeminsion(p2)){
     return (p1.val==con);
    }
  }
- //prefix
+ //prefix ++
  PhysicalNumber& PhysicalNumber::  operator++(){
      this->val++;
      return *this;
  }
-    //postfix
+    //postfix ++
     const PhysicalNumber PhysicalNumber:: operator++(int x){
         PhysicalNumber copy= *this;
         this->val++;
         return copy;
     }
 
-    //prefix
+    //prefix --
     PhysicalNumber& PhysicalNumber:: operator--(){
         this->val--; 
         return *this;
 
     }
-    //postfix
+    //postfix --
     const PhysicalNumber PhysicalNumber::  operator--(int x){
         PhysicalNumber copy= *this;
         this->val--;
@@ -281,21 +292,8 @@ if(!p1.isSameDeminsion(p2)){
          return os;
 
     }
-
-    static istream& getAndCheckNextCharIs(istream& input, char expectedChar) {
-    char actualChar;
-    input >> actualChar;
-    if (!input) return input;
-
-    if (actualChar!=expectedChar) 
-        // failbit is for format error
-        input.setstate(ios::failbit);
-    return input;
-}
-
-
-
-     istream& ariel:: operator>>(istream& is, PhysicalNumber& p){
+// output
+    istream& ariel:: operator>>(istream& is, PhysicalNumber& p){
 
 //         double new_val;
 //         Unit new_u;
