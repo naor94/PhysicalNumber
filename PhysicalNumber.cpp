@@ -354,64 +354,7 @@ if(!p1.isSameDeminsion(p2)){
     return is;
   }
 	    
-// 	    string ans;
-//         is>>ans;
-//         double new_val;
-//         Unit u;
 
-//         ios::pos_type startPosition = is.tellg();
-//         int firstClose=ans.find("[");
-//         int secondClose=ans.find("]");
-
-//         if(firstClose<=0||secondClose<ans.length()-1){
-//         auto errorState = is.rdstate(); // remember error state
-//         is.clear(); // clear error so seekg will work
-//         is.seekg(startPosition); // rewind
-//         is.clear(errorState); // set back the error flag
-//         return is;
-//         }
-
-
-//         string number=ans.substr(0,firstClose);
-//         string type= ans.substr(firstClose+1,secondClose-firstClose-1);
-//         try
-//         {
-//              new_val=stod(number);
-        
-//         }
-//         catch(std::exception& e){
-//         auto errorState = is.rdstate(); // remember error state
-//         is.clear(); // clear error so seekg will work
-//         is.seekg(startPosition); // rewind
-//         is.clear(errorState); // set back the error flag
-//         return is;
-
-//         }
-//         if(type.compare("km")==0||type.compare("KM")==0)u=Unit::KM;
-//         else if(type.compare("m")==0||type.compare("M")==0)u=Unit::M;
-//         else if(type.compare("cm")==0||type.compare("CM")==0)u=Unit::CM;
-//         else if(type.compare("ton")==0||type.compare("TON")==0)u=Unit::TON;
-//         else if(type.compare("kg")==0||type.compare("KG")==0)u=Unit::KG;
-//         else if(type.compare("g")==0||type.compare("G")==0)u=Unit::G;
-//         else if(type.compare("hour")==0||type.compare("HOUR")==0)u=Unit::HOUR;
-//         else if(type.compare("min")==0||type.compare("MIN")==0)u=Unit::MIN;
-//         else if(type.compare("sec")==0||type.compare("SEC")==0)u=Unit::SEC;
-//         else{
-//         auto errorState = is.rdstate(); // remember error state
-//         is.clear(); // clear error so seekg will work
-//         is.seekg(startPosition); // rewind
-//         is.clear(errorState); // set back the error flag
-//         return is;
-//         }
-//         p.type=u;
-//         p.val=new_val;
-
-
-
-        
-      
-//     return is;
-//     }
 
 
 
