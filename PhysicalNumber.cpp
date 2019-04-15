@@ -319,23 +319,45 @@ if(!p1.isSameDeminsion(p2)){
     // return input;
     // }
 
-    string s;
+//     string s;
+//     is>>s;
+//     bool error = false;
+//     int unitStart = s.find("[");
+//     int unitEnd= s.find("]");
+//     if(unitStart<0||unitEnd<0) error = true;
+//     string newUnit=s.substr(unitStart+1,unitEnd-unitStart-1);	
+//     if(newUnit.compare("cm")== 0 || newUnit.compare("CM")== 0) p.type = Unit::CM;
+//     else if (newUnit.compare("m")== 0 || newUnit.compare("M")== 0) p.type = Unit::M;
+//     else if (newUnit.compare("km")== 0 || newUnit.compare("KM")== 0) p.type = Unit::KM;
+//     else if (newUnit.compare("sec")== 0 || newUnit.compare("SEC")== 0) p.type = Unit::SEC;
+//     else if (newUnit.compare("min")== 0 || newUnit.compare("MIN")== 0) p.type = Unit::MIN;
+//     else if (newUnit.compare("hour")== 0 || newUnit.compare("HOUR")== 0) p.type = Unit::HOUR;
+//     else if (newUnit.compare("g")== 0 || newUnit.compare("G")== 0) p.type = Unit::G;
+//     else if (newUnit.compare("kg")== 0 || newUnit.compare("KG")== 0) p.type = Unit::KG;
+//     else if (newUnit.compare("ton")== 0 || newUnit.compare("TON")== 0) p.type = Unit::TON;
+//     else  error=true;
+//     double newValue;
+//     if (error) auto errorState = is.rdstate();
+//     else {
+//           try {
+//              newValue = stod(s.substr(0,unitStart));
+// 	  }
+// 	  catch (exception &e) { 
+// 		  auto errorState = is.rdstate();
+// 		  return is;
+// 	  }
+//             p.val=newValue;
+//     }  
+//     return is;
+//   }
+
+
+string s;
     is>>s;
     bool error = false;
     int unitStart = s.find("[");
     int unitEnd= s.find("]");
-    if(unitStart<0||unitEnd<0) error = true;
-    string newUnit=s.substr(unitStart+1,unitEnd-unitStart-1);	
-    if(newUnit.compare("cm")== 0 || newUnit.compare("CM")== 0) p.type = Unit::CM;
-    else if (newUnit.compare("m")== 0 || newUnit.compare("M")== 0) p.type = Unit::M;
-    else if (newUnit.compare("km")== 0 || newUnit.compare("KM")== 0) p.type = Unit::KM;
-    else if (newUnit.compare("sec")== 0 || newUnit.compare("SEC")== 0) p.type = Unit::SEC;
-    else if (newUnit.compare("min")== 0 || newUnit.compare("MIN")== 0) p.type = Unit::MIN;
-    else if (newUnit.compare("hour")== 0 || newUnit.compare("HOUR")== 0) p.type = Unit::HOUR;
-    else if (newUnit.compare("g")== 0 || newUnit.compare("G")== 0) p.type = Unit::G;
-    else if (newUnit.compare("kg")== 0 || newUnit.compare("KG")== 0) p.type = Unit::KG;
-    else if (newUnit.compare("ton")== 0 || newUnit.compare("TON")== 0) p.type = Unit::TON;
-    else  error=true;
+    if(unitStart<=0||unitEnd<0||unitEnd!=s.length()-1) error = true;
     double newValue;
     if (error) auto errorState = is.rdstate();
     else {
@@ -346,13 +368,47 @@ if(!p1.isSameDeminsion(p2)){
 		  auto errorState = is.rdstate();
 		  return is;
 	  }
-            p.val=newValue;
+          string newUnit=s.substr(unitStart+1,unitEnd-unitStart-1);	
+          if(newUnit.compare("cm")== 0 || newUnit.compare("CM")== 0) {
+		  p.type = Unit::CM;
+		  p.val=newValue;  
+	  }
+          else if (newUnit.compare("m")== 0 || newUnit.compare("M")== 0) {
+		  p.type = Unit::M;
+		  p.val=newValue;  
+	  }
+          else if (newUnit.compare("km")== 0 || newUnit.compare("KM")== 0) {
+		  p.type = Unit::KM;
+		  p.val=newValue;  
+	  }
+          else if (newUnit.compare("sec")== 0 || newUnit.compare("SEC")== 0) {
+		  p.type = Unit::SEC;
+		  p.val=newValue;
+	  }
+          else if (newUnit.compare("min")== 0 || newUnit.compare("MIN")== 0) {
+		  p.type = Unit::MIN;
+		  p.val=newValue;
+	  }
+          else if (newUnit.compare("hour")== 0 || newUnit.compare("HOUR")== 0) {
+		  p.type= Unit::HOUR;
+		  p.val=newValue;
+	  }
+          else if (newUnit.compare("g")== 0 || newUnit.compare("G")== 0) {
+		  p.type = Unit::G;
+		  p.val=newValue;
+	  }
+          else if (newUnit.compare("kg")== 0 || newUnit.compare("KG")== 0) {
+		  p.type = Unit::KG;
+		  p.val=newValue;
+	  }
+          else if (newUnit.compare("ton")== 0 || newUnit.compare("TON")== 0) {
+		  p.type = Unit::TON;
+		  p.val=newValue;
+	  }
+          else  auto errorState = is.rdstate();
     }  
     return is;
   }
-
-
-
 
 // int main(){
   
