@@ -3,13 +3,13 @@
 using namespace ariel;
 using namespace std;
 
-
+// constructor
 PhysicalNumber::PhysicalNumber(double value, Unit u){
     this->val=value;
     this->type=u;
-    
-}
+ }
 
+// convertor
 const double PhysicalNumber:: typeConvertor(const PhysicalNumber& p) const{
     switch (type)
     {
