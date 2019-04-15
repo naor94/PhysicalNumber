@@ -337,45 +337,46 @@ if(!p1.isSameDeminsion(p2)){
 	  }
           string newUnit=s.substr(unitStart+1,unitEnd-unitStart-1);	
           if(newUnit.compare("cm")== 0 || newUnit.compare("CM")== 0) {
-		  p.u = Unit::CM;
-		  p.value=newValue;  
+		  p.type = Unit::CM;
+		  p.val=newValue;  
 	  }
           else if (newUnit.compare("m")== 0 || newUnit.compare("M")== 0) {
-		  p.u = Unit::M;
-		  p.value=newValue;  
+		 p.type= Unit::M;
+		  p.val=newValue;  
 	  }
           else if (newUnit.compare("km")== 0 || newUnit.compare("KM")== 0) {
-		  p.u = Unit::KM;
-		  p.value=newValue;  
+		  p.type = Unit::KM;
+		  p.val=newValue;  
 	  }
           else if (newUnit.compare("sec")== 0 || newUnit.compare("SEC")== 0) {
-		  p.u = Unit::SEC;
-		  p.value=newValue;
+		  p.type = Unit::SEC;
+		  p.val=newValue;
 	  }
           else if (newUnit.compare("min")== 0 || newUnit.compare("MIN")== 0) {
-		  p.u = Unit::MIN;
-		  p.value=newValue;
+		  p.type = Unit::MIN;
+		  p.val=newValue;
 	  }
           else if (newUnit.compare("hour")== 0 || newUnit.compare("HOUR")== 0) {
-		  p.u = Unit::HOUR;
-		  p.value=newValue;
+		  p.type = Unit::HOUR;
+		  p.val=newValue;
 	  }
           else if (newUnit.compare("g")== 0 || newUnit.compare("G")== 0) {
-		  p.u = Unit::G;
-		  p.value=newValue;
+		  p.type= Unit::G;
+		  p.val=newValue;
 	  }
           else if (newUnit.compare("kg")== 0 || newUnit.compare("KG")== 0) {
-		  p.u = Unit::KG;
-		  p.value=newValue;
+		  p.type = Unit::KG;
+		  p.val=newValue;
 	  }
           else if (newUnit.compare("ton")== 0 || newUnit.compare("TON")== 0) {
-		  p.u = Unit::TON;
-		  p.value=newValue;
+		  p.type = Unit::TON;
+		  p.val=newValue;
 	  }
           else  auto errorState = is.rdstate();
     }  
     return is;
-  }     
+  }
+
 	     
 	     
 	     
