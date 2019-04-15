@@ -295,122 +295,123 @@ if(!p1.isSameDeminsion(p2)){
 // output
     istream& ariel:: operator>>(istream& is, PhysicalNumber& p){
 
-//     string s;
-//     is>>s;
-//     bool error = false;
-//     int unitStart = s.find("[");
-//     int unitEnd= s.find("]");
-//     if(unitStart<=0||unitEnd<0||unitEnd!=s.length()-1) error = true;
-//     double newValue;
-//     if (error) auto errorState = is.rdstate();
-//     else {
-//           try {
-//              newValue = stod(s.substr(0,unitStart));
-// 	  }
-// 	  catch (exception &e) { 
-// 		  auto errorState = is.rdstate();
-// 		  return is;
-// 	  }
-//           string newUnit=s.substr(unitStart+1,unitEnd-unitStart-1);	
-//           if(newUnit.compare("cm")== 0 || newUnit.compare("CM")== 0) {
-// 		  p.type = Unit::CM;
-// 		  p.val=newValue;  
-// 	  }
-//           else if (newUnit.compare("m")== 0 || newUnit.compare("M")== 0) {
-// 		 p.type= Unit::M;
-// 		  p.val=newValue;  
-// 	  }
-//           else if (newUnit.compare("km")== 0 || newUnit.compare("KM")== 0) {
-// 		  p.type = Unit::KM;
-// 		  p.val=newValue;  
-// 	  }
-//           else if (newUnit.compare("sec")== 0 || newUnit.compare("SEC")== 0) {
-// 		  p.type = Unit::SEC;
-// 		  p.val=newValue;
-// 	  }
-//           else if (newUnit.compare("min")== 0 || newUnit.compare("MIN")== 0) {
-// 		  p.type = Unit::MIN;
-// 		  p.val=newValue;
-// 	  }
-//           else if (newUnit.compare("hour")== 0 || newUnit.compare("HOUR")== 0) {
-// 		  p.type = Unit::HOUR;
-// 		  p.val=newValue;
-// 	  }
-//           else if (newUnit.compare("g")== 0 || newUnit.compare("G")== 0) {
-// 		  p.type= Unit::G;
-// 		  p.val=newValue;
-// 	  }
-//           else if (newUnit.compare("kg")== 0 || newUnit.compare("KG")== 0) {
-// 		  p.type = Unit::KG;
-// 		  p.val=newValue;
-// 	  }
-//           else if (newUnit.compare("ton")== 0 || newUnit.compare("TON")== 0) {
-// 		  p.type = Unit::TON;
-// 		  p.val=newValue;
-// 	  }
-//           else  auto errorState = is.rdstate();
-//     }  
-//     return is;
-//   }
+    string ans;
+    double new_val;
+    is>>ans;
+    bool error = false;
+    int firstClose = s.find("[");
+    int secondClose= s.find("]");
+    if(firstClose<=0||secondClose<0||secondClose!=s.length()-1) error = true;
+   
+    if (error) auto errorState = is.rdstate();
+    else {
+          try {
+             new_val = stod(s.substr(0,firstClose));
+	  }
+	  catch (exception &e) { 
+		  auto errorState = is.rdstate();
+		  return is;
+	  }
+          string new_Unit=ans.substr(firstClose+1,secondClose-firstClose-1);	
+          if(new_Unit.compare("cm")== 0 || new_Unit.compare("CM")== 0) {
+		  p.type = Unit::CM;
+		  p.val=new_val;  
+	  }
+          else if (new_Unit.compare("m")== 0 || new_Unit.compare("M")== 0) {
+		 p.type= Unit::M;
+		  p.val=new_val;  
+	  }
+          else if (new_Unit.compare("km")== 0 || new_Unit.compare("KM")== 0) {
+		  p.type = Unit::KM;
+		  p.val=new_val;  
+	  }
+          else if (new_Unit.compare("sec")== 0 || new_Unit.compare("SEC")== 0) {
+		  p.type = Unit::SEC;
+		  p.val=new_val;
+	  }
+          else if (new_Unit.compare("min")== 0 || new_Unit.compare("MIN")== 0) {
+		  p.type = Unit::MIN;
+		  p.val=new_val;
+	  }
+          else if (new_Unit.compare("hour")== 0 || new_Unit.compare("HOUR")== 0) {
+		  p.type = Unit::HOUR;
+		  p.val=new_val;
+	  }
+          else if (new_Unit.compare("g")== 0 || new_Unit.compare("G")== 0) {
+		  p.type= Unit::G;
+		  p.val=new_val;
+	  }
+          else if (new_Unit.compare("kg")== 0 || new_Unit.compare("KG")== 0) {
+		  p.type = Unit::KG;
+		  p.val=new_val;
+	  }
+          else if (new_Unit.compare("ton")== 0 || new_Unit.compare("TON")== 0) {
+		  p.type = Unit::TON;
+		  p.val=new_val;
+	  }
+          else  auto errorState = is.rdstate();
+    }  
+    return is;
+  }
 	    
-	    string ans;
-        is>>ans;
-        double new_val;
-        Unit u;
+// 	    string ans;
+//         is>>ans;
+//         double new_val;
+//         Unit u;
 
-        ios::pos_type startPosition = is.tellg();
-        int firstClose=ans.find("[");
-        int secondClose=ans.find("]");
+//         ios::pos_type startPosition = is.tellg();
+//         int firstClose=ans.find("[");
+//         int secondClose=ans.find("]");
 
-        if(firstClose<=0||secondClose<ans.length()-1){
-        auto errorState = is.rdstate(); // remember error state
-        is.clear(); // clear error so seekg will work
-        is.seekg(startPosition); // rewind
-        is.clear(errorState); // set back the error flag
-        return is;
-        }
+//         if(firstClose<=0||secondClose<ans.length()-1){
+//         auto errorState = is.rdstate(); // remember error state
+//         is.clear(); // clear error so seekg will work
+//         is.seekg(startPosition); // rewind
+//         is.clear(errorState); // set back the error flag
+//         return is;
+//         }
 
 
-        string number=ans.substr(0,firstClose);
-        string type= ans.substr(firstClose+1,secondClose-firstClose-1);
-        try
-        {
-             new_val=stod(number);
+//         string number=ans.substr(0,firstClose);
+//         string type= ans.substr(firstClose+1,secondClose-firstClose-1);
+//         try
+//         {
+//              new_val=stod(number);
         
-        }
-        catch(std::exception& e){
-        auto errorState = is.rdstate(); // remember error state
-        is.clear(); // clear error so seekg will work
-        is.seekg(startPosition); // rewind
-        is.clear(errorState); // set back the error flag
-        return is;
+//         }
+//         catch(std::exception& e){
+//         auto errorState = is.rdstate(); // remember error state
+//         is.clear(); // clear error so seekg will work
+//         is.seekg(startPosition); // rewind
+//         is.clear(errorState); // set back the error flag
+//         return is;
 
-        }
-        if(type.compare("km")==0||type.compare("KM")==0)u=Unit::KM;
-        else if(type.compare("m")==0||type.compare("M")==0)u=Unit::M;
-        else if(type.compare("cm")==0||type.compare("CM")==0)u=Unit::CM;
-        else if(type.compare("ton")==0||type.compare("TON")==0)u=Unit::TON;
-        else if(type.compare("kg")==0||type.compare("KG")==0)u=Unit::KG;
-        else if(type.compare("g")==0||type.compare("G")==0)u=Unit::G;
-        else if(type.compare("hour")==0||type.compare("HOUR")==0)u=Unit::HOUR;
-        else if(type.compare("min")==0||type.compare("MIN")==0)u=Unit::MIN;
-        else if(type.compare("sec")==0||type.compare("SEC")==0)u=Unit::SEC;
-        else{
-        auto errorState = is.rdstate(); // remember error state
-        is.clear(); // clear error so seekg will work
-        is.seekg(startPosition); // rewind
-        is.clear(errorState); // set back the error flag
-        return is;
-        }
-        p.type=u;
-        p.val=new_val;
+//         }
+//         if(type.compare("km")==0||type.compare("KM")==0)u=Unit::KM;
+//         else if(type.compare("m")==0||type.compare("M")==0)u=Unit::M;
+//         else if(type.compare("cm")==0||type.compare("CM")==0)u=Unit::CM;
+//         else if(type.compare("ton")==0||type.compare("TON")==0)u=Unit::TON;
+//         else if(type.compare("kg")==0||type.compare("KG")==0)u=Unit::KG;
+//         else if(type.compare("g")==0||type.compare("G")==0)u=Unit::G;
+//         else if(type.compare("hour")==0||type.compare("HOUR")==0)u=Unit::HOUR;
+//         else if(type.compare("min")==0||type.compare("MIN")==0)u=Unit::MIN;
+//         else if(type.compare("sec")==0||type.compare("SEC")==0)u=Unit::SEC;
+//         else{
+//         auto errorState = is.rdstate(); // remember error state
+//         is.clear(); // clear error so seekg will work
+//         is.seekg(startPosition); // rewind
+//         is.clear(errorState); // set back the error flag
+//         return is;
+//         }
+//         p.type=u;
+//         p.val=new_val;
 
 
 
         
       
-    return is;
-    }
+//     return is;
+//     }
 
 
 
