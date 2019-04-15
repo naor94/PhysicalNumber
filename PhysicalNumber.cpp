@@ -33,14 +33,14 @@ const double PhysicalNumber:: typeConvertor(const PhysicalNumber& p) const{
 
         case Unit::HOUR:
         if(p.type==Unit::HOUR) return 1*p.val;
-        if(p.type==Unit::MIN) return 0.016666666666667 *p.val;
-        if(p.type==Unit::SEC) return 0.00027777777777778*p.val;
+        if(p.type==Unit::MIN) return p.val/60;
+        if(p.type==Unit::SEC) return p.val/3600;
         break;
 
         case Unit::MIN:
         if(p.type==Unit::HOUR) return 60*p.val;
         if(p.type==Unit::MIN) return 1*p.val;
-        if(p.type==Unit::SEC) return 0.016666666666667 *p.val;
+        if(p.type==Unit::SEC) return p.val/60;
         break;
 
         case Unit::SEC:
