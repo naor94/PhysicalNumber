@@ -299,14 +299,14 @@ if(!p1.isSameDeminsion(p2)){
     double new_val;
     is>>ans;
     bool error = false;
-    int firstClose = s.find("[");
-    int secondClose= s.find("]");
+    int firstClose = ans.find("[");
+    int secondClose= ans.find("]");
     if(firstClose<=0||secondClose<0||secondClose!=s.length()-1) error = true;
    
     if (error) auto errorState = is.rdstate();
     else {
           try {
-             new_val = stod(s.substr(0,firstClose));
+             new_val = stod(ans.substr(0,firstClose));
 	  }
 	  catch (exception &e) { 
 		  auto errorState = is.rdstate();
