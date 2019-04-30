@@ -11,14 +11,14 @@ class  ariel::PhysicalNumber{
     private:
     const double typeConvertor(const PhysicalNumber& p) const;
     const bool isSameDeminsion(const PhysicalNumber& p ) const;
-
+    double val;
+    Unit type;
 
 
 
 
     public:
-    double val;
-    Unit type;
+    
 
     //constructor
     PhysicalNumber(double value, Unit u);
